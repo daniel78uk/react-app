@@ -1,9 +1,9 @@
 let nextTodoId = 0
 
 export const actions = {
-  ADD_TODO: 'ADD_TODO',
-  SET_VISIBILITY_FILTER: 'SET_VISIBILITY_FILTER',
-  TOGGLE_TODO: 'TOGGLE_TODO'
+  ADD_TODO: Symbol(),
+  SET_VISIBILITY_FILTER: Symbol(),
+  TOGGLE_TODO: Symbol()
 };
 
 export const addTodo = (text) => {
