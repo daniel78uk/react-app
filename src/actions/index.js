@@ -1,8 +1,14 @@
 let nextTodoId = 0
 
+export const actions = {
+  ADD_TODO: 'ADD_TODO',
+  SET_VISIBILITY_FILTER: 'SET_VISIBILITY_FILTER',
+  TOGGLE_TODO: 'TOGGLE_TODO'
+};
+
 export const addTodo = (text) => {
   return {
-    type: 'ADD_TODO',
+    type: actions.ADD_TODO,
     id: nextTodoId++,
     text
   }
@@ -10,14 +16,14 @@ export const addTodo = (text) => {
 
 export const setVisibilityFilter = (filter) => {
   return {
-    type: 'SET_VISIBILITY_FILTER',
+    type: actions.SET_VISIBILITY_FILTER,
     filter
   }
 }
 
 export const toggleTodo = (id) => {
   return {
-    type: 'TOGGLE_TODO',
+    type: actions.TOGGLE_TODO,
     id
   }
 }
