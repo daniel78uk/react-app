@@ -4,8 +4,7 @@
     "compilerOptions": {
         "target": "es6",
         "module": "commonjs",
-        "allowSyntheticDefaultImports": true,
-        "asi": true
+        "allowSyntheticDefaultImports": true
     },
     "exclude": [
         "node_modules",
@@ -14,5 +13,7 @@
         "tmp",
         "temp",
         "client/vendor"
-    ]
+    ],
+    "esversion": 6,
+    "asi": true
 }

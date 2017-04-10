@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import AddTodo from './containers/AddTodo'
+import ListItems from './containers/ListItems'
 
 
 class App extends Component {
@@ -9,6 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <AddTodo />
+        <ListItems />
       </div>
     );
   }
