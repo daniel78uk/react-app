@@ -1,6 +1,6 @@
 import {actions} from '../actions'
 
-const todo = (state = {}, action) => {
+const todo = (state = {}, action = {type:null}) => {
   switch (action.type) {
     case actions.ADD_TODO:
       return {
@@ -13,10 +13,12 @@ const todo = (state = {}, action) => {
         return state
       }
 
-      return {
-        ...state,
-        completed: !state.completed
-      };
+      return Object.assign(
+        state,
+        {
+          completed: !state.completed
+        }
+      )
 
     default:
       return state
