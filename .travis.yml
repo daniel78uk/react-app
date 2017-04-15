@@ -1,9 +1,6 @@
 language: node_js
-node_js:
-- '7.7'
-
-sudo:
-  required
+  node_js:
+    - 6
 
 cache:
   yarn: true
@@ -18,7 +15,6 @@ script:
 
 after_success:
 - yarn build
-
 
 notifications:
   email: false
