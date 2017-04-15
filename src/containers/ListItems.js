@@ -1,30 +1,28 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from '../actions'
+import { toggleTodo } from '../actions'
 
-let AddTodo = ({ dispatch }) => {
+let ListItems = ({ todos, dispatch }) => {
+  let items = todos
 
   return (
     <ul>
-      <form onSubmit={e => {
-        e.preventDefault()
-        if (!input.value.trim()) {
-          return
-        }
-        dispatch(addTodo(input.value))
-        input.value = ''
-      }}>
-        <input ref={node => {
-          input = node
-        }} />
-        <button type="submit">
-          Add Todo
-        </button>
-      </form>
+      {
+        items.map(x=> (
+          <li key={x.id}>{x.text} 
+            <input
+              name="completed"
+              type="checkbox"
+              checked={x.completed}
+              onChange={()=>dispatch(toggleTodo(x.id))} 
+            />
+          </li>
+          )
+        ) 
+      }
     </ul>
   )
 }
+ListItems = connect(state => state)(ListItems)
 
-AddTodo = connect()(AddTodo)
-
-export default AddTodo
+export default ListItems
