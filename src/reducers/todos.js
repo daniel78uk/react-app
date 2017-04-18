@@ -1,42 +1,35 @@
-import {actions} from '../actions'
+import camelCase from 'camel-case';
+import { List, Record } from 'immutable';
 
-const todo = (state = {}, action = {type:null}) => {
-  switch (action.type) {
-    case actions.ADD_TODO:
-      return {
-        id: action.id,
-        text: action.text,
-        completed: false
-      }
-    case actions.TOGGLE_TODO:
-      if (state.id !== action.id) {
-        return state
-      }
+const Todo = new Record({
+  id: 0,
+  index: 0,
+  isComplete: false,
+  label: 'todo',
+});
 
-      return {
-        ...state,
-        completed: !state.completed
-      }
+const ACTIONS_MAP = {
+  addTodo(state, { todo }) {
+    return state.push(new Todo({ index: todo.id, ...todo }));
+  },
 
-    default:
-      return state
+  deleteTodo(state, { id }) {
+    return state.filter(todo => todo.get('id') !== id);
+  },
+
+  editTodo(state, { id, label }) {
+    return state.map(todo =>
+      (todo.get('id') === id)
+        ? todo.set('label', label)
+        : todo
+    );
   }
-}
+};
 
-const todos = (state = [], action) => {
-  switch (action.type) {
-    case actions.ADD_TODO:
-      return [
-        ...state,
-        todo(undefined, action)
-      ]
-    case actions.TOGGLE_TODO:
-      return state.map(t =>
-        todo(t, action)
-      )
-    default:
-      return state
-  }
-}
+const initialState = new List();
 
-export default todos
+export default function todos(state = initialState, { type, payload }) {
+  const reducer = ACTIONS_MAP[camelCase(type)];
+
+  return (reducer) ? reducer(state, payload) : state;
+}
