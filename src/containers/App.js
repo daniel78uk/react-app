@@ -1,5 +1,6 @@
 import { List } from 'immutable'
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import '../App.css'
@@ -28,11 +29,12 @@ class App extends Component {
 
   render() {
     const { actions, location, todos } = this.props
-    const { addTodo, } = actions
+    const { addTodo } = actions
     const filter = location.pathname.replace('/', '')
 
     return (
       <div className="App">
+        here
         <AddTodo addTodo={addTodo} />
         <TodoList actions={actions} filter={filter} todos={todos}/>
       </div>

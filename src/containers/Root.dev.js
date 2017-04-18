@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import routes from '../routes'
 import DevTools from './DevTools'
-import { Router } from 'react-router'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 const Root = ({ store, history }) => (
   <Provider store={store}>

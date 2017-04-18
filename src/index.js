@@ -4,4 +4,4 @@ import { render } from 'react-dom';
 import Root from './containers/Root'
 import configureStore from './store/configureStore'
 
-render(<Root store={configureStore()} />, document.getElementById('app'));
+render(<Root store={configureStore()} />, document.getElementById('root'));
