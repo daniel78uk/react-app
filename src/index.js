@@ -1,21 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import DevTools from './DevTools';
+import { render } from 'react-dom';
 
-import './index.css';
+import Root from './containers/Root'
+import configureStore from './store/configureStore'
 
-import { Provider } from 'react-redux';
-import Store from './store';
-
-const StoreInstance = Store();
-
-ReactDOM.render(
-  <Provider store={StoreInstance}>
-    <div>
-      <App />
-      <DevTools />
-    </div>
-  </Provider>,
-  document.getElementById('root')
-);
+render(<Root store={configureStore()} />, document.getElementById('app'));
